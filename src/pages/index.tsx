@@ -6,7 +6,7 @@ import Head from "next/head";
 import { Button } from "../Components/atom/Button/Button";
 import Navbar from "../Components/Navbar";
 import { useEffect, useState } from 'react'
-
+import Link from 'next/link'
 
 
 export default function Home({ articles }: any) {  
@@ -18,9 +18,12 @@ export default function Home({ articles }: any) {
         articles &&
           articles.map((article: any) => (
             <article key={article.id}>             
-            <h2>{article.attributes.Title}</h2>
-            <h2>{article.attributes.Category}</h2>
-            
+            <h2>{article.attributes.Title}
+              <span>
+              {article.attributes.Category}
+              </span>
+              <Link href={`/${ article.id }`}>Read more ...</Link>
+            </h2>
             </article>            
           ))
       }
@@ -38,6 +41,3 @@ export async function getServerSideProps() {
     }
   } 
 }
-
-
-
