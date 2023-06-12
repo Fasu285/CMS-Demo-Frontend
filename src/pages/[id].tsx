@@ -12,8 +12,7 @@ export default function Page({article} : any) {
           <header className="mb-4 lg:mb-6 not-format">
             <address className="flex items-center mb-6 not-italic">
                   <div className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
-                  <Image className="mr-4 w-16 h-16 rounded-full" width={500} height={500} src="/image1.jpg" alt=""/>
-                
+                  <Image className="mr-4 w-16 h-16 rounded-full" src={"http://127.0.0.1:1337" + article.attributes.Images.data.attributes.formats.thumbnail.url} width={500} height={500} alt=""/>                
                       <div>
                           <a href="#" rel="author" className="text-xl font-bold text-gray-900 dark:text-white">{ article.attributes.Author}</a>
                           <p className="text-base font-light text-gray-500 dark:text-gray-400">{article.attributes.Category}</p>
@@ -38,7 +37,7 @@ export default function Page({article} : any) {
 
 export async function getServerSideProps(context : any) {
     const articleId = context.params.id;
-    const res = await fetch("http://127.0.0.1:1337/api/articles/" + articleId);
+    const res = await fetch("http://127.0.0.1:1337/api/articles/" + articleId + "?populate=*");
     const articles = await res.json();
     console.log(JSON.stringify(articles));
 

@@ -30,7 +30,7 @@ export default function Home({ articles }: any) {
                             <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                 <div className="flex items-center">
                                     <div className="flex-shrink-0 h-10 w-10">
-                                        <Image className="h-10 w-10 rounded-full" src={article.attributes.Images} width={500} height={500} alt={article.attributes.Images} />
+                                        <Image className="h-10 w-10 rounded-full" src={"http://127.0.0.1:1337" + article.attributes.Images.data.attributes.formats.thumbnail.url} width={500} height={500} alt="" />
                                     </div>
 
                                     <div className="ml-4">
